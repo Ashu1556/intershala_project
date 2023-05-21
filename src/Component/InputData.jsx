@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineSearch } from "react-icons/ai";
+import "./navbar.css";
 
 const InputData = () => {
   const [input, setInput] = useState("");
@@ -16,7 +16,7 @@ const InputData = () => {
     );
     setfilteredData(data);
     console.log(data);
-  }, [input]);
+  }, [input, product]);
 
   return (
     <div className="container">
@@ -35,12 +35,49 @@ const InputData = () => {
         {filteredData.map((ele) => {
           return (
             <div key={ele.id} className="home_container1">
-              <div style={{ width: "100%", height: "50%" }}>
+              <div
+                className="hovereffect"
+                style={{ width: "100%", height: "50%", borderRadius: "16px" }}
+              >
                 <img
                   src={ele.thumb}
-                  style={{ width: "100%", height: "100%" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  className="imageradius"
                   alt=""
                 />
+                <div className="overlay">
+                  <div className="text8">
+                    <div>
+                      <img
+                        src={ele.thumb}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                        }}
+                        className="imageradius"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "50px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                      <h2>{ele.title}</h2>
+
+                      <p> {ele.primary_category.name}</p>
+                      <p>{ele.short_description}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 style={{
